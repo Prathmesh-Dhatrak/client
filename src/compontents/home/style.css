@@ -1,0 +1,325 @@
+/*======================== header section start ========================*/
+
+.header_section{
+    background-image: url('../assets/img/bg.png');
+    background-repeat: no-repeat;
+  	background-attachment: fixed;
+  	background-size: cover;
+  	height: 640px;
+  	margin-right: 0px;
+  	margin-left: 0px;
+  	color: white;
+  	padding: 3%;
+  	padding-left: 5%;
+}
+.title_h1{
+	font-size: 4rem;
+}
+.title_h2{
+	font-size: 2rem;
+}
+#title{
+	margin-left: 5%;
+	margin-top: 7%;
+}
+.shop{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 25px;
+	padding-left: 25px;
+	background-color: #2D8DB9;
+	border: 0px;
+	border-radius: 6px 6px;
+	color: white;
+	font-size: 18px;
+	margin-top: 30px;
+}
+.fas{
+	margin-left: 10px;
+}
+
+.Ellipse{
+	width: 410px;
+	height: 410px;
+	margin-left: 880px;
+	margin-top: -200px;
+}
+.man{
+	width: 440px;
+	height: 620px;
+	margin-top: -445px;
+	margin-left: 860px;
+}
+#modal_Ellipse{
+	margin-top: -178px;
+}
+
+/*======================== header section end ========================*/
+
+
+
+/*======================== Category section start ========================*/
+
+.Category{
+	background-color: black;
+	color: white;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding: 4%;
+	background-size:cover;
+      background-attachment:fixed;      
+      background-repeat:no-repeat;
+}
+
+.black_ellipse{
+	margin-right: 70px;
+	width: 60px;
+	height: 60px;
+}
+
+#hot{
+	margin-left: 5%;
+}
+
+.heat, .oversize, .shirt, .tshirt, .hoodie, .mask, .bottle{
+	position: relative;
+	right: 120px;
+	width: 40px;
+	height: 40px;
+}
+.heat_p{
+	margin-left: 5px;
+}
+.oversize_p, .shirt_p, .hoodie_p{
+	margin-left: -15px;
+}
+.mask_p, .bottle_p{
+	margin-left: 15px;
+}
+#list{
+	margin-top: 4%;
+}
+#products{
+	margin-top: 6%;
+	padding-left: 5%;
+	padding-right: 5%;
+	text-align: center;
+	
+}
+
+
+.product{
+	background-color: #313030;
+	/* max-width: 10px; */
+	height: 314px;
+	border-radius: 20px;
+	margin-right: 2%;
+	margin-bottom: 3%;
+	padding: 2%;
+	overflow: hidden;
+	text-align: center;
+	display: inline-block;
+}
+
+.demo {
+	transition: .5s ease;
+	opacity: 0;
+	position: relative;
+	top: 0%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+.product:hover .image {
+  opacity: 0.3;
+}
+
+.product:hover .demo {
+	opacity: 1;
+}
+
+.prod_1, .prod_3, .prod_4{
+	width: 240px;
+	height: 264px;
+	margin-left: -10px;
+}
+.prod_2{
+	width: 340px;
+	height: 264px;
+	margin-left: -60px;
+}
+
+
+
+.text {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+.prod_5{
+	width: 240px;
+	height: 240px;
+	margin-left: -13px;
+}
+.prod_6, .prod_7{
+	margin-left: -23px;
+}
+
+.discount{
+	width: 47px;
+	height: 25px;
+	background-color: #55E890;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+	bottom: 280px;
+	left: 0px;
+}
+.discount2{
+	width: 47px;
+	height: 25px;
+	background-color: #55E890;
+	text-align: center;
+	border-radius: 5px;
+	position: relative;
+	bottom: -670px;
+	left: 460px;
+}
+.see_more{
+	text-align: center;
+	background-color: #2D8DB9;
+	color: white;
+	border-radius: 5px;
+	padding: 3%;
+	width: 178px;
+}
+.See{
+	margin-left: 40%;
+
+}
+#add{
+	margin-bottom: 30%;
+}
+.name {
+	margin-top: -50%;
+	text-shadow: 5px lightgray;
+}
+.fa-heart{
+	margin-left: -2px;
+}
+
+
+/*======================== Category section end ========================*/
+
+
+
+/*======================== scroll producrt section start ========================*/
+
+
+.scroll_producrt{
+	background-color: #313030;
+	width: 100%;
+	height: 660px;
+	color: white;
+	overflow: auto;
+	padding-bottom: 0px;
+}
+
+::-webkit-scrollbar{
+	overflow: hidden;
+	width: 0px;
+	height: 0px;
+}
+
+.product_1{
+	padding: 5%;
+	/*margin-left: 0px;
+	margin-right: 4px;*/
+}
+
+.product_2{
+	padding: 5%;
+	height: 550px;
+}
+
+.product_1_h1{
+	margin-top: 50px;
+	font-size: 5rem;
+}
+.product_1_p{
+	margin-top: 50px;
+}
+.two_M{
+	width: 100%;
+	height: 644px;
+	margin-top: -55px;
+}
+.modal_img{
+	height: 550px;
+}
+
+/*======================== scroll producrt section end ========================*/
+
+
+/*======================== Discover the new you section start ======================== */
+
+
+.Discover_you{
+	background-color: black;
+	padding: 5%;
+	padding-bottom: 3%;
+}
+
+.Discover_you_h1{
+	color: white;
+	font-size: 5rem;
+	text-align: center;
+}
+
+.modals{
+	padding: 5%;
+}
+
+.modal_img{
+	width: 566px;
+	height: 749px;
+}
+
+
+/*======================== Discover the new you section end ======================== */
+
+
+
+/*======================== Look Different section start ========================*/
+
+
+.Look_Different{
+	background-color: black;
+	padding: 5%;
+	padding-top: 10%;
+	margin-top: 0px;
+}
+
+.slide_modals{
+	width: 450px;
+	height: 600px;
+}
+
+.Look_Different_h1{
+	color: white;
+	text-align: center;
+	font-size: 7rem;
+	margin-top: 5%;
+}
+
+
+
+/*======================== Look Different section end ========================*/
+
+
+  
