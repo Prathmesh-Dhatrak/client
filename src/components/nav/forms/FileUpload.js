@@ -27,7 +27,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           (uri) => {
             axios
               .post(
-                `${process.env.REACT_APP_API}/uploadimages`,
+                `${"https://two-meter-square.herokuapp.com/api"}/uploadimages`,
                 { image: uri },
                 {
                   headers: {
@@ -58,7 +58,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
     setLoading(true);
     axios
       .post(
-        `${process.env.REACT_APP_API}/removeimage`,
+        `${"https://two-meter-square.herokuapp.com/api"}/removeimage`,
         { public_id },
         {
           headers: {
