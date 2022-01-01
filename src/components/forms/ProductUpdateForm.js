@@ -1,18 +1,18 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Select } from "antd";
+
 const { Option } = Select;
 
 const ProductUpdateForm = ({
-  handleChange,
   handleSubmit,
-  values,
+  handleChange,
   setValues,
+  values,
   handleCategoryChange,
   categories,
   subOptions,
   arrayOfSubs,
-  setArrayOfSubIds,
+  setArrayOfSubs,
   selectedCategory,
 }) => {
   // destructure
@@ -74,7 +74,6 @@ const ProductUpdateForm = ({
           className="form-control"
           onChange={handleChange}
         >
-          <option>Please select</option>
           <option value="No">No</option>
           <option value="Yes">Yes</option>
         </select>
@@ -124,7 +123,7 @@ const ProductUpdateForm = ({
       </div>
 
       <div className="form-group">
-        <label> Category</label>
+        <label>Category</label>
         <select
           name="category"
           className="form-control"
@@ -141,13 +140,13 @@ const ProductUpdateForm = ({
       </div>
 
       <div>
-        <label> Sub Categories</label>
+        <label>Sub Categories</label>
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          placeholder="Please Select"
+          placeholder="Please select"
           value={arrayOfSubs}
-          onChange={(value) => setArrayOfSubIds(value)}
+          onChange={(value) => setArrayOfSubs(value)}
         >
           {subOptions.length &&
             subOptions.map((s) => (
@@ -157,9 +156,11 @@ const ProductUpdateForm = ({
             ))}
         </Select>
       </div>
+
       <br />
       <button className="btn btn-outline-info">Save</button>
     </form>
   );
 };
+
 export default ProductUpdateForm;

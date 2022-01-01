@@ -7,18 +7,17 @@ const LoadingToRedirect = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount((count) => --count);
+      setCount((currentCount) => --currentCount);
     }, 1000);
-
+    // redirect once count is equal to 0
     count === 0 && history.push("/");
-
+    // cleanup
     return () => clearInterval(interval);
   }, [count, history]);
 
   return (
     <div className="container p-5 text-center">
-      {" "}
-      Redirecting within {count} seconds
+      <p>Redirecting you in {count} seconds</p>
     </div>
   );
 };

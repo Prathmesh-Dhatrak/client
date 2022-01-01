@@ -4,14 +4,17 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { getCategories } from "../../../functions/category";
 import { updateSub, getSub } from "../../../functions/sub";
-import CatogeryForm from "../../../components/nav/forms/CatogeryForm";
+import { Link } from "react-router-dom";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import CategoryForm from "../../../components/forms/CategoryForm";
+import LocalSearch from "../../../components/forms/LocalSearch";
 
 const SubUpdate = ({ match, history }) => {
   const { user } = useSelector((state) => ({ ...state }));
+
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
-
   const [parent, setParent] = useState("");
 
   useEffect(() => {
@@ -20,9 +23,7 @@ const SubUpdate = ({ match, history }) => {
   }, []);
 
   const loadCategories = () =>
-    getCategories().then((c) => {
-      setCategories(c.data);
-    });
+    getCategories().then((c) => setCategories(c.data));
 
   const loadSub = () =>
     getSub(match.params.slug).then((s) => {
@@ -32,15 +33,14 @@ const SubUpdate = ({ match, history }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // console.log(name);
     setLoading(true);
-
     updateSub(match.params.slug, { name, parent }, user.token)
       .then((res) => {
-        // console.log(res);
+        // console.log(res)
         setLoading(false);
         setName("");
-        toast.success(`${res.data.name} Sub Category Updated`);
+        toast.success(`"${res.data.name}" is updated`);
         history.push("/admin/sub");
       })
       .catch((err) => {
@@ -51,49 +51,43 @@ const SubUpdate = ({ match, history }) => {
   };
 
   return (
-    <>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-2">
-            {" "}
-            <AdminNav />
-          </div>
-          <div className="col">
-            {loading ? (
-              <h4 className="text-danger">Loading.. </h4>
-            ) : (
-              <h4>Create Sub Category </h4>
-            )}
-            <div className="form-group">
-              <label>Parent Category</label>
-              <select
-                name="category"
-                className="form-control"
-                onChange={(e) => setParent(e.target.value)}
-              >
-                <option> Please Select Any Category</option>
-                {categories.length > 0 &&
-                  categories.map((c) => (
-                    <option
-                      key={c._id}
-                      value={c._id}
-                      selected={c._id === parent}
-                    >
-                      {c.name}
-                    </option>
-                  ))}
-              </select>
-            </div>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-2">
+          <AdminNav />
+        </div>
+        <div className="col">
+          {loading ? (
+            <h4 className="text-danger">Loading..</h4>
+          ) : (
+            <h4>Update sub category</h4>
+          )}
 
-            <CatogeryForm
-              handleSubmit={handleSubmit}
-              name={name}
-              setName={setName}
-            />
+          <div className="form-group">
+            <label>Parent category</label>
+            <select
+              name="category"
+              className="form-control"
+              onChange={(e) => setParent(e.target.value)}
+            >
+              <option>Please select</option>
+              {categories.length > 0 &&
+                categories.map((c) => (
+                  <option key={c._id} value={c._id} selected={c._id === parent}>
+                    {c.name}
+                  </option>
+                ))}
+            </select>
           </div>
+
+          <CategoryForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+          />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

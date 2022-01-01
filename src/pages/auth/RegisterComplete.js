@@ -9,25 +9,24 @@ const RegisterComplete = ({ history }) => {
   const [password, setPassword] = useState("");
 
   // const { user } = useSelector((state) => ({ ...state }));
-
   let dispatch = useDispatch();
 
   useEffect(() => {
-    setEmail(window.localStorage.getItem("emailForRegisteration"));
+    setEmail(window.localStorage.getItem("emailForRegistration"));
+    // console.log(window.location.href);
+    // console.log(window.localStorage.getItem("emailForRegistration"));
   }, [history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // validation
-
     if (!email || !password) {
-      toast.error("Email and Password is required");
+      toast.error("Email and password is required");
       return;
     }
 
     if (password.length < 6) {
-      toast.error("Password Cannot be less than 6 characters");
+      toast.error("Password must be at least 6 characters long");
       return;
     }
 
@@ -36,19 +35,16 @@ const RegisterComplete = ({ history }) => {
         email,
         window.location.href
       );
-
+      //   console.log("RESULT", result);
       if (result.user.emailVerified) {
-        // remove user email from local storage because it is of no use
-
-        window.localStorage.removeItem("emailForRegisteration");
-
+        // remove user email fom local storage
+        window.localStorage.removeItem("emailForRegistration");
         // get user id token
-
         let user = auth.currentUser;
-
         await user.updatePassword(password);
         const idTokenResult = await user.getIdTokenResult();
         // redux store
+        console.log("user", user, "idTokenResult", idTokenResult);
 
         createOrUpdateUser(idTokenResult.token)
           .then((res) => {
@@ -66,7 +62,6 @@ const RegisterComplete = ({ history }) => {
           .catch((err) => console.log(err));
 
         // redirect
-
         history.push("/");
       }
     } catch (error) {
@@ -75,7 +70,7 @@ const RegisterComplete = ({ history }) => {
     }
   };
 
-  const completeRegisterationForm = () => (
+  const completeRegistrationForm = () => (
     <form onSubmit={handleSubmit}>
       <input type="email" className="form-control" value={email} disabled />
 
@@ -84,13 +79,12 @@ const RegisterComplete = ({ history }) => {
         className="form-control"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        autoFocus
         placeholder="Password"
+        autoFocus
       />
-
       <br />
       <button type="submit" className="btn btn-raised">
-        Complete Registeration
+        Complete Registration
       </button>
     </form>
   );
@@ -100,7 +94,7 @@ const RegisterComplete = ({ history }) => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h4>Register Complete</h4>
-          {completeRegisterationForm()}
+          {completeRegistrationForm()}
         </div>
       </div>
     </div>

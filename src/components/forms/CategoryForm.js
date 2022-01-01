@@ -1,6 +1,6 @@
 import React from "react";
 
-const CatogeryForm = ({ handleSubmit, name, setName }) => (
+const CategoryForm = ({ handleSubmit, name, setName }) => (
   <form onSubmit={handleSubmit}>
     <div className="form-group">
       <label>Name</label>
@@ -12,11 +12,10 @@ const CatogeryForm = ({ handleSubmit, name, setName }) => (
         autoFocus
         required
       />
-
       <br />
       <button className="btn btn-outline-primary">Save</button>
     </div>
   </form>
 );
 
-export default CatogeryForm;
+export default CategoryForm;

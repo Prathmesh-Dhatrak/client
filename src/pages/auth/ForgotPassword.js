@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
-
-import { connectAdvanced, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ForgotPassword = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -11,18 +10,15 @@ const ForgotPassword = ({ history }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    if (user && user.token) {
-      history.push("/");
-    }
+    if (user && user.token) history.push("/");
   }, [user, history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setLoading(true);
 
     const config = {
-      url: "http://localhost:3000/login",
+      url: process.env.REACT_APP_FORGOT_PASSWORD_REDIRECT,
       handleCodeInApp: true,
     };
 
@@ -31,7 +27,7 @@ const ForgotPassword = ({ history }) => {
       .then(() => {
         setEmail("");
         setLoading(false);
-        toast.success("Check your email for password link");
+        toast.success("Check your email for password reset link");
       })
       .catch((error) => {
         setLoading(false);
@@ -54,12 +50,12 @@ const ForgotPassword = ({ history }) => {
           className="form-control"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter Email"
-        ></input>
-
+          placeholder="Type your email"
+          autoFocus
+        />
+        <br />
         <button className="btn btn-raised" disabled={!email}>
-          {" "}
-          Forgot Password{" "}
+          Submit
         </button>
       </form>
     </div>

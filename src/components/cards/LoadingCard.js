@@ -7,7 +7,7 @@ const LoadingCard = ({ count }) => {
 
     for (let i = 0; i < count; i++) {
       totalCards.push(
-        <Card className="col-md-4">
+        <Card className="col-md-4" key={i}>
           <Skeleton active></Skeleton>
         </Card>
       );
@@ -16,7 +16,7 @@ const LoadingCard = ({ count }) => {
     return totalCards;
   };
 
-  return <div className="row pb-5"> {cards()}</div>;
+  return <div className="row pb-5">{cards()}</div>;
 };
 
 export default LoadingCard;

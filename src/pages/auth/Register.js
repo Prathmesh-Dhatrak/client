@@ -9,31 +9,24 @@ const Register = ({ history }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    if (user && user.token) {
-      history.push("/");
-    }
+    if (user && user.token) history.push("/");
   }, [user, history]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // console.log("ENV --->", process.env.REACT_APP_REGISTER_REDIRECT_URL);
     const config = {
-      url: "http://localhost:3000/register/complete",
+      url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
       handleCodeInApp: true,
     };
 
     await auth.sendSignInLinkToEmail(email, config);
-
     toast.success(
-      `Email is sent to ${email}. Click the link to Complete your registeration`
+      `Email is sent to ${email}. Click the link to complete your registration.`
     );
-
     // save user email in local storage
-
-    window.localStorage.setItem("emailForRegisteration", email);
-
-    // clear the state
-
+    window.localStorage.setItem("emailForRegistration", email);
+    // clear state
     setEmail("");
   };
 
@@ -44,7 +37,7 @@ const Register = ({ history }) => {
         className="form-control"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Enter Email"
+        placeholder="Your email"
         autoFocus
       />
 

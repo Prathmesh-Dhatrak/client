@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getProducts, getProductsCount } from "../../functions/product";
-import ProductCart from "../cards/ProductCart";
+import ProductCard from "../cards/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 
@@ -11,14 +11,6 @@ const BestSellers = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const loadAllProducts = () => {
-      setLoading(true);
-      // sort order limit
-      getProducts("sold", "desc", page).then((res) => {
-        setLoading(false);
-        setProducts(res.data);
-      });
-    };
     loadAllProducts();
   }, [page]);
 
@@ -26,18 +18,25 @@ const BestSellers = () => {
     getProductsCount().then((res) => setProductsCount(res.data));
   }, []);
 
-  
+  const loadAllProducts = () => {
+    setLoading(true);
+    // sort, order, limit
+    getProducts("sold", "desc", page).then((res) => {
+      setProducts(res.data);
+      setLoading(false);
+    });
+  };
 
   return (
     <>
       <div className="container">
         {loading ? (
-          <LoadingCard count={4} />
+          <LoadingCard count={3} />
         ) : (
           <div className="row">
             {products.map((product) => (
               <div key={product._id} className="col-md-4">
-                <ProductCart product={product} />
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
@@ -45,7 +44,7 @@ const BestSellers = () => {
       </div>
 
       <div className="row">
-        <nav className="p-3 pt-5 text-center col-md-4 offset-md-4">
+        <nav className="col-md-4 offset-md-4 text-center pt-5 p-3">
           <Pagination
             current={page}
             total={(productsCount / 3) * 10}

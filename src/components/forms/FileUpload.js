@@ -7,15 +7,14 @@ import { Avatar, Badge } from "antd";
 const FileUpload = ({ values, setValues, setLoading }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
-  const FileUploadAndResize = (e) => {
+  const fileUploadAndResize = (e) => {
     // console.log(e.target.files);
-    // resise
-    let files = e.target.files;
+    // resize
+    let files = e.target.files; // 3
     let allUploadedFiles = values.images;
 
     if (files) {
       setLoading(true);
-
       for (let i = 0; i < files.length; i++) {
         Resizer.imageFileResizer(
           files[i],
@@ -25,9 +24,10 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           100,
           0,
           (uri) => {
+            // console.log(uri);
             axios
               .post(
-                `${"https://two-meter-square.herokuapp.com/api"}/uploadimages`,
+                `${process.env.REACT_APP_API}/uploadimages`,
                 { image: uri },
                 {
                   headers: {
@@ -36,29 +36,31 @@ const FileUpload = ({ values, setValues, setLoading }) => {
                 }
               )
               .then((res) => {
-                console.log("IMAGE UPLOAD RESPONSE DATA ", res);
+                console.log("IMAGE UPLOAD RES DATA", res);
                 setLoading(false);
                 allUploadedFiles.push(res.data);
+
                 setValues({ ...values, images: allUploadedFiles });
               })
               .catch((err) => {
                 setLoading(false);
-                console.log("CLOUDINARY_UPLOAD_ERR", err);
+                console.log("CLOUDINARY UPLOAD ERR", err);
               });
           },
           "base64"
         );
       }
     }
-    // send back to the server to upload to the cloudinary
-    // set url to images[] in the parent component - product array
+    // send back to server to upload to cloudinary
+    // set url to images[] in the parent component state - ProductCreate
   };
 
   const handleImageRemove = (public_id) => {
     setLoading(true);
+    // console.log("remove image", public_id);
     axios
       .post(
-        `${"https://two-meter-square.herokuapp.com/api"}/removeimage`,
+        `${process.env.REACT_APP_API}/removeimage`,
         { public_id },
         {
           headers: {
@@ -72,7 +74,6 @@ const FileUpload = ({ values, setValues, setLoading }) => {
         let filteredImages = images.filter((item) => {
           return item.public_id !== public_id;
         });
-
         setValues({ ...values, images: filteredImages });
       })
       .catch((err) => {
@@ -84,37 +85,33 @@ const FileUpload = ({ values, setValues, setLoading }) => {
   return (
     <>
       <div className="row">
-        <div className="col">
-          {values.images &&
-            values.images.map((image) => (
-              <Badge
-                count="X"
-                key={image.public_id}
-                onClick={() => handleImageRemove(image.public_id)}
-                style={{ cursor: "pointer" }}
-              >
-                <Avatar
-                  src={image.url}
-                  size={100}
-                  shape="square"
-                  className="m-3"
-                />
-              </Badge>
-            ))}
-        </div>
+        {values.images &&
+          values.images.map((image) => (
+            <Badge
+              count="X"
+              key={image.public_id}
+              onClick={() => handleImageRemove(image.public_id)}
+              style={{ cursor: "pointer" }}
+            >
+              <Avatar
+                src={image.url}
+                size={100}
+                shape="square"
+                className="ml-3"
+              />
+            </Badge>
+          ))}
       </div>
-
       <div className="row">
-        <label className="btn btn-primary  btn-raised">
-          Choose
+        <label className="btn btn-primary btn-raised mt-3">
+          Choose File
           <input
             type="file"
             multiple
             hidden
             accept="images/*"
-            onChange={FileUploadAndResize}
+            onChange={fileUploadAndResize}
           />
-          &nbsp; File
         </label>
       </div>
     </>

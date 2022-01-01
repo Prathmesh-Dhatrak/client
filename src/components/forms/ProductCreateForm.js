@@ -1,16 +1,16 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { Select } from "antd";
+
 const { Option } = Select;
 
 const ProductCreateForm = ({
-  handleChange,
   handleSubmit,
+  handleChange,
+  setValues,
   values,
-  handleCategoryChange,
+  handleCatagoryChange,
   subOptions,
   showSub,
-  setValues,
 }) => {
   // destructure
   const {
@@ -113,13 +113,13 @@ const ProductCreateForm = ({
       </div>
 
       <div className="form-group">
-        <label> Category</label>
+        <label>Category</label>
         <select
           name="category"
           className="form-control"
-          onChange={handleCategoryChange}
+          onChange={handleCatagoryChange}
         >
-          <option> Please Select Any Category</option>
+          <option>Please select</option>
           {categories.length > 0 &&
             categories.map((c) => (
               <option key={c._id} value={c._id}>
@@ -131,11 +131,11 @@ const ProductCreateForm = ({
 
       {showSub && (
         <div>
-          <label> Sub Categories</label>
+          <label>Sub Categories</label>
           <Select
             mode="multiple"
             style={{ width: "100%" }}
-            placeholder="Please Select"
+            placeholder="Please select"
             value={subs}
             onChange={(value) => setValues({ ...values, subs: value })}
           >
@@ -154,4 +154,5 @@ const ProductCreateForm = ({
     </form>
   );
 };
+
 export default ProductCreateForm;
