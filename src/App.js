@@ -39,6 +39,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 // import Payment from "./pages/Payment";
 
 // using lazy
+import "antd/dist/antd.css";
 const Login = lazy(() => import("./pages/auth/Login"));
 const Register = lazy(() => import("./pages/auth/Register"));
 const Home = lazy(() => import("./pages/Home"));
