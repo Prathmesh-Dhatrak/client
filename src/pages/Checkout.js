@@ -9,7 +9,7 @@ import {
   createCashOrderForUser,
 } from "../functions/user";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.snow.css";
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
