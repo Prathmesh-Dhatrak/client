@@ -20,7 +20,7 @@ Firebase,
 MongoDB, 
 
 ## Server
-The server Link is -: [Prathmesh-Dhatrak/server](https://github.com/Prathmesh-Dhatrak/server)
+The server github repo -: [Prathmesh-Dhatrak/server](https://github.com/Prathmesh-Dhatrak/server)
 
 ## Steps to run frontend
 
