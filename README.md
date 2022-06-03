@@ -1,7 +1,7 @@
 # Two Meter Square - MERN Stack Ecommerce Website
 The Ecommerce website for TowMeterSquare Shop. Built with Reactjs.
 
-##Link -: [!!](https://twometersquare.netlify.app/)
+##Link -: [twometersquare.netlify.ap](https://twometersquare.netlify.app/)
 
 ## Fetchers
 Search products, 
@@ -20,7 +20,7 @@ Firebase,
 MongoDB, 
 
 ## Server
-The server Link is -:[link](https://github.com/Prathmesh-Dhatrak/server)
+The server Link is -: [Prathmesh-Dhatrak/server](https://github.com/Prathmesh-Dhatrak/server)
 
 ## Steps to run frontend
 
