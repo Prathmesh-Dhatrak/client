@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { getProduct, productStar } from "../functions/product";
 import SingleProduct from "../components/cards/SingleProduct";

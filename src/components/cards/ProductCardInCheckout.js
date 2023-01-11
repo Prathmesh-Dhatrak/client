@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import ModalImage from "react-modal-image";
 import laptop from "../../images/laptop.png";
@@ -54,7 +55,7 @@ const ProductCardInCheckout = ({ p }) => {
       }
 
       cart.map((product, i) => {
-        if (product._id == p._id) {
+        if (product._id === p._id) {
           cart[i].count = count;
         }
       });

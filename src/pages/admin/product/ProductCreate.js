@@ -51,6 +51,7 @@ const ProductCreate = () => {
 
   useEffect(() => {
     loadCategories();
+    // eslint-disable-next-line 
   }, []);
 
   const loadCategories = () =>

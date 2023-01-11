@@ -5,6 +5,7 @@ import laptop from "../../images/laptop.png";
 import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import _ from "lodash";
+// eslint-disable-next-line 
 import { useSelector, useDispatch } from "react-redux";
 
 const { Meta } = Card;
@@ -74,10 +75,10 @@ const ProductCard = ({ product }) => {
             <EyeOutlined className="text-warning" /> <br /> View Product
           </Link>,
           <Tooltip title={tooltip}>
-            <a onClick={handleAddToCart} disabled={product.quantity < 1}>
+            <button onClick={handleAddToCart} disabled={product.quantity < 1}>
               <ShoppingCartOutlined className="text-danger" /> <br />
               {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-            </a>
+            </button>
           </Tooltip>,
         ]}
       >
