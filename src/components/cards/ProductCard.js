@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
   const [tooltip, setTooltip] = useState("Click to add");
 
   // redux
-  const { user, cart } = useSelector((state) => ({ ...state }));
+  // const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -63,6 +63,7 @@ const ProductCard = ({ product }) => {
       <Card
         cover={
           <img
+            alt={title}
             src={images && images.length ? images[0].url : laptop}
             style={{ height: "150px", objectFit: "cover" }}
             className="p-1"

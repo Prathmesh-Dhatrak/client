@@ -27,7 +27,12 @@ const Header = () => {
 
   const handleClick = (e) => {
     // console.log(e.key);
-    setCurrent(e.key);
+    if (e.key === "/") {
+      return;
+    } else {
+      setCurrent(e.key);
+      return;
+    }
   };
 
   const logout = () => {
@@ -92,10 +97,11 @@ const Header = () => {
           </Item>
         </SubMenu>
       )}
-
-      <span className="float-right p-1">
-        <Search />
-      </span>
+      <Item key="/">
+        <span className="float-right p-1">
+          <Search />
+        </span>
+      </Item>
     </Menu>
   );
 };

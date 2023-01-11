@@ -1,14 +1,14 @@
 import * as firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjAef6fPsX9tkaSyhl2pyItCkUkpYA1LQ",
-  authDomain: "twometersquareauth-development.firebaseapp.com",
+  apiKey: "AIzaSyAKT07CVQwG5JquYU_5iDoG1nt-cR5Lj_E",
+  authDomain: "twometersquare.firebaseapp.com",
   databaseURL:
-    "https://twometersquareauth-development-default-rtdb.firebaseio.com",
-  projectId: "twometersquareauth-development",
-  storageBucket: "twometersquareauth-development.appspot.com",
-  messagingSenderId: "324002867272",
-  appId: "1:324002867272:web:c503beb32ab31f3596507d",
+    "https://twometersquare-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "twometersquare",
+  storageBucket: "twometersquare.appspot.com",
+  messagingSenderId: "611467978625",
+  appId: "1:611467978625:web:a9d72ffd3ad53a06f8ea80",
 };
 
 // Initialize Firebase

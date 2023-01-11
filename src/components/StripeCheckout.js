@@ -121,6 +121,7 @@ const StripeCheckout = ({ history }) => {
         <Card
           cover={
             <img
+            alt=""
               src={Laptop}
               style={{
                 height: "200px",
